@@ -4,6 +4,8 @@
 /.vs/CSC8503/FileContentIndex/read.lock
 /.vs
 /Build
+/CMakeFiles
+*.cmake
 /out/build/x64-Debug
 /CSC8503/CMakeFiles/CSC8503.dir
 /CSC8503/CSC8503.dir
