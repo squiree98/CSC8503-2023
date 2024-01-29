@@ -8,19 +8,8 @@ namespace NCL {
 		class GameClient;
 		class NetworkPlayer;
 
-		enum NetworkRole {
-			Server,
-			Client
-		};
-
 		struct ClientInput {
 
-			ClientInput() {
-
-			}
-
-			// struct that takes in user inputs to be sent from client to serve
-			//
 			// Author: Ewan Squire
 			ClientInput(int lastID, char but1, char but2, char but3, char but4, char but5, char but6, char but7, char but8, Vector3 camPos) {
 				this->lastID = lastID;
@@ -65,12 +54,6 @@ namespace NCL {
 			void BroadcastSnapshot(bool deltaFrame);
 			void UpdateMinimumState();
 
-			virtual void CreatePlayer1() = 0;
-			virtual void CreatePlayer2() = 0;
-			virtual void RotateCameraAroundPLayer(bool clockWise, float speed, float dt) = 0;
-
-			virtual void SetItemsLeftToZero() = 0;
-
 			std::map<int, int> stateIDs;
 
 			GameServer* thisServer;
@@ -82,16 +65,6 @@ namespace NCL {
 
 			std::map<int, GameObject*> serverPlayers;
 			GameObject* localPlayer;
-
-			// variables created by me to track network state and transfer data
-
-			// server stores latest client ack of full state
-			int latestClientFullState;
-			// client stores ID of latest full state
-			int latestServerFullState;
-			int networkRole;
-
-			ClientInput lastPlayer2Input;
 		};
 	}
 }
